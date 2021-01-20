@@ -15,13 +15,13 @@ def main():
     train_columns.append('instrument_family')
     
     
-    df_train_raw = pd.read_json(path_or_buf='../nsynth/nsynth-train/examples.json', orient='index')
+    df_train_raw = pd.read_json(path_or_buf='train.json', orient='index')
     df_train = df_train_raw.drop(unwanted_columns, axis=1)
     df_train = df_train.join(pd.DataFrame(df_train.pop('qualities').values.tolist(), index=df_train.index, columns=qualities_columns))
     df_train = df_train[train_columns]
 
         
-    df_test_raw = pd.read_json(path_or_buf='../nsynth/nsynth-test/examples.json', orient='index')
+    df_test_raw = pd.read_json(path_or_buf='test.json', orient='index')
     df_test = df_test_raw.drop(unwanted_columns, axis=1)
     df_test = df_test.join(pd.DataFrame(df_test.pop('qualities').values.tolist(), index = df_test.index, columns=qualities_columns))
     df_test = df_test[train_columns]
