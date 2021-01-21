@@ -37,7 +37,7 @@ def main():
     
     df_testlist = df_test['instrument_family'].values.tolist()
     c = (np.array(df_testlist) == np.array(result_family))
-    print('Accuracy: ', np.count_nonzero(c == True) / np.count_nonzero(c == False))
+    print('Accuracy: ', np.count_nonzero(c == True) / (np.count_nonzero(c == True) + np.count_nonzero(c == False)))
 
 if __name__ == "__main__":
     
